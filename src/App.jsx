@@ -1,6 +1,6 @@
 import './App.css'
 import Home from './pages/Home' // Home Page
-import Signup from './pages/Signup' // Signup
+import Register from './pages/Signup' // Signup
 import Savedjob from './pages/Savedjob' // Savedjob  
 import Job from './pages/Job' // Jobs Page
 import Review from './pages/Review' // Review Application 
@@ -21,7 +21,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Register />} />
           <Route path="/posts-job" element={<PostJob />} />
           <Route path="/saved-jobs" element={<Savedjob />} />
           <Route path="/career-advice" element={<Career />} />
