@@ -4,9 +4,9 @@ import { SignedIn } from "@clerk/clerk-react"; // If the user is signed in
 import { ArrowRight } from "lucide-react"; // Icon
 // Images
 import hero from "../public/Hero.png"; 
-import hero2 from "../public/Hero2.png";
-import hero4 from "../public/Hero4.png";
-import hero6 from "../public/Hero6.png";
+import hero2 from "../public/hero2.png";
+import hero4 from "../public/hero4.png";
+import hero6 from "../public/hero6.png";
 
 // Logos
 const logos = [
