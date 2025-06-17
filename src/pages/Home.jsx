@@ -2,7 +2,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar' // Navbar component
 import Hero from '../components/Hero' // Hero component
-import View from '../components/view' // View component
+import View from '../components/View' // View component
 
 export default function Home() {
   return (
