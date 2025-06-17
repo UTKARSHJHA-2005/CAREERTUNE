@@ -1,4 +1,4 @@
-// This is the navbar component which is the head of the webpage.
+// This is the Hero component which is for the landing page.
 import { useEffect, useState } from "react";
 import { SignedIn } from "@clerk/clerk-react"; // Clerk
 import { ArrowRight, Sparkles, Users, TrendingUp } from "lucide-react"; // Icons
