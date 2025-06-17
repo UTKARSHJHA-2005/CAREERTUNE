@@ -1,6 +1,6 @@
 import './App.css'
 import Home from './pages/Home' // Home Page
-import Register from './pages/Signup' // Signup
+import Register from './pages/SignUp' // Signup
 import Savedjob from './pages/Savedjob' // Savedjob  
 import Job from './pages/Job' // Jobs Page
 import Review from './pages/Review' // Review Application 
