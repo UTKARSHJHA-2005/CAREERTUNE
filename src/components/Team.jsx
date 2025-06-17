@@ -1,7 +1,9 @@
+// This is the component in which advisor intro is given for landing page.
 import { useEffect } from "react";
-import AOS from 'aos';
+import AOS from 'aos'; // AOS
 import 'aos/dist/aos.css';
 
+// Advisors - name,role,image
 const members = [
   {
     name: "Kekky Cooper",
