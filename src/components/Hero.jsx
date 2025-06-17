@@ -1,11 +1,13 @@
+// This is the navbar component which is the head of the webpage.
 import { useEffect, useState } from "react";
-import { SignedIn } from "@clerk/clerk-react";
-import { ArrowRight, Sparkles, Users, TrendingUp } from "lucide-react";
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import Team from "./Team";
-import AOS from 'aos';
+import { SignedIn } from "@clerk/clerk-react"; // Clerk
+import { ArrowRight, Sparkles, Users, TrendingUp } from "lucide-react"; // Icons
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react'; // Icons
+import Team from "./Team"; // Team Component
+import AOS from 'aos'; // AOS
 import 'aos/dist/aos.css';
 
+// Images
 const heroImages = [
   "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop",
   "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop",
@@ -13,6 +15,7 @@ const heroImages = [
   "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=300&fit=crop"
 ];
 
+// Logos of Company
 const logos = [
   { name: "Google", url: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
   { name: "Microsoft", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/500px-Microsoft_logo_%282012%29.svg.png" },
@@ -27,6 +30,7 @@ const logos = [
   { name: "Adobe", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Adobe_Corporate_logo.svg/768px-Adobe_Corporate_logo.svg.png" }
 ];
 
+// Stars(rating)
 function renderStars(count = 5, rating = 5) {
   return Array.from({ length: 5 }, (_, index) => (
     <Star
@@ -39,6 +43,7 @@ function renderStars(count = 5, rating = 5) {
   ));
 }
 
+// Testimonials- id,rating,text,name,role,company,image,gradient
 const testimonials = [
   {
     id: 1,
@@ -72,6 +77,7 @@ const testimonials = [
   }
 ];
 
+// Acheievements
 const stats = [
   { icon: Users, value: "50K+", label: "Active Users" },
   { icon: TrendingUp, value: "95%", label: "Success Rate" },
@@ -89,6 +95,7 @@ export default function Hero() {
     AOS.init({ duration: 1000 });
   }, []);
 
+  /// This is for mobile view in which arrow function is there in which next and previous arrows are there. 
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isAnimating) {
@@ -97,7 +104,6 @@ export default function Hero() {
     }, 5000);
     return () => clearInterval(interval);
   }, [isAnimating]);
-
   const nextTestimonial = () => {
     if (!isAnimating) {
       setIsAnimating(true);
@@ -105,7 +111,6 @@ export default function Hero() {
       setTimeout(() => setIsAnimating(false), 500);
     }
   };
-
   const prevTestimonial = () => {
     if (!isAnimating) {
       setIsAnimating(true);
@@ -114,6 +119,7 @@ export default function Hero() {
     }
   };
 
+  // This is for movement of images.
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
@@ -173,7 +179,6 @@ export default function Hero() {
                   ))}
                 </div>
               </div>
-
               {/* Images */}
               <div className="transition-all mr-6 duration-1000">
                 <div className="relative w-full aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl mb-4">
@@ -192,7 +197,6 @@ export default function Hero() {
                     ))}
                   </div>
                 </div>
-
                 <div className="grid grid-cols-3 gap-2 sm:gap-4">
                   {heroImages.slice(1, 4).map((img, i) => (
                     <div key={i} className="aspect-square overflow-hidden rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
@@ -209,7 +213,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
         {/* Logo Strip */}
         <div className="relative z-10 w-full bg-white/5 backdrop-blur border-t border-white/10 py-6 lg:py-8">
           <div data-aos="fade-right" className="w-full px-4 sm:px-6 lg:px-8">
@@ -228,7 +231,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
+        {/* Scrolling Animation */}
         <style jsx>{`
         @keyframes scroll {
           0% { transform: translateX(0); }
@@ -239,6 +242,7 @@ export default function Hero() {
         }
       `}</style>
       </section>
+      {/* Team Component*/}
       <Team />
       <section className="py-20 w-full bg-gradient-to-br from-blue-800 via-blue-900 to-slate-900 overflow-hidden">
         {/* Animated background elements */}
@@ -248,7 +252,7 @@ export default function Hero() {
           <div className="absolute bottom-10 left-1/3 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
         </div>
         <div className="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          {/* Header Section */}
+          {/* Header Section Of the Testimonial */}
           <div data-aos="flip-up" className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-gray-800/90 backdrop-blur-sm rounded-full border border-gray-700/50 mb-6">
               <span className="text-sm font-medium text-white">
@@ -299,7 +303,6 @@ export default function Hero() {
                         <blockquote className="text-gray-700 text-lg leading-relaxed mb-8 font-medium">
                           "{testimonial.text}"
                         </blockquote>
-
                         {/* Author info */}
                         <div className="flex items-center">
                           <div className="relative">
@@ -316,7 +319,6 @@ export default function Hero() {
                           </div>
                         </div>
                       </div>
-
                       {/* Hover effect overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
                     </div>
@@ -330,20 +332,16 @@ export default function Hero() {
                 <div className={`transition-transform duration-500 ${isAnimating ? 'scale-95 opacity-50' : 'scale-100 opacity-100'}`}>
                   <div className="relative overflow-hidden rounded-2xl bg-white shadow-2xl border border-gray-200">
                     <div className={`h-1 bg-gradient-to-r ${testimonials[currentIndex].gradient}`}></div>
-
                     <div className="p-8">
                       <div className="mb-6">
                         <Quote className="w-8 h-8 text-gray-400 opacity-60" />
                       </div>
-
                       <div className="flex items-center gap-1 mb-6">
                         {renderStars(5, testimonials[currentIndex].rating)}
                       </div>
-
                       <blockquote className="text-gray-700 text-lg leading-relaxed mb-8 font-medium">
                         "{testimonials[currentIndex].text}"
                       </blockquote>
-
                       <div className="flex items-center">
                         <div className="relative">
                           <img
@@ -361,21 +359,15 @@ export default function Hero() {
                     </div>
                   </div>
                 </div>
-
                 {/* Navigation buttons */}
-                <button
-                  onClick={prevTestimonial}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 -translate-x-full w-12 h-12 bg-gray-800/90 backdrop-blur-sm rounded-full border border-gray-700/50 flex items-center justify-center text-white hover:bg-gray-700/90 transition-all duration-300 hover:scale-110"
-                >
+                <button onClick={prevTestimonial}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 -translate-x-full w-12 h-12 bg-gray-800/90 backdrop-blur-sm rounded-full border border-gray-700/50 flex items-center justify-center text-white hover:bg-gray-700/90 transition-all duration-300 hover:scale-110">
                   <ChevronLeft className="w-6 h-6" />
                 </button>
-                <button
-                  onClick={nextTestimonial}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 translate-x-full w-12 h-12 bg-gray-800/90 backdrop-blur-sm rounded-full border border-gray-700/50 flex items-center justify-center text-white hover:bg-gray-700/90 transition-all duration-300 hover:scale-110"
-                >
+                <button onClick={nextTestimonial}
+                className="absolute right-4 top-1/2 -translate-y-1/2 translate-x-full w-12 h-12 bg-gray-800/90 backdrop-blur-sm rounded-full border border-gray-700/50 flex items-center justify-center text-white hover:bg-gray-700/90 transition-all duration-300 hover:scale-110">
                   <ChevronRight className="w-6 h-6" />
                 </button>
-
                 {/* Dots indicator */}
                 <div className="flex justify-center mt-8 gap-2">
                   {testimonials.map((_, index) => (
