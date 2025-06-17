@@ -95,7 +95,7 @@ export default function SingleAdviser() {
         </motion.div>
         {/* How They Will Help You Section */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-        className="bg-white rounded-2xl shadow-xl p-8 mb-6">
+          className="bg-white rounded-2xl shadow-xl p-8 mb-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             <div className="flex items-center">
               <HelpCircle size={24} className="mr-2 text-blue-600" />
@@ -111,8 +111,8 @@ export default function SingleAdviser() {
           </div>
         </motion.div>
         {/* Contact Section */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} 
-        className="bg-white rounded-2xl shadow-xl p-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+          className="bg-white rounded-2xl shadow-xl p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
           <div className="space-y-4">
             <div className="flex items-center text-gray-700">

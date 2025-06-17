@@ -7,6 +7,8 @@ import { getJobs } from '../utils/api'; // API for getting jobs
 import { Search, MapPin, Building2, ArrowRight, Clock } from 'lucide-react'; // Icons
 import supabase from '../utils/supabase2'; // Supabase
 import Navbar from '../components/Navbar'; // Navbar Component
+import AOS from 'aos'; //AOS
+import 'aos/dist/aos.css';
 
 export default function ModernJobSearch() {
     const { user } = useUser(); // User
@@ -17,6 +19,11 @@ export default function ModernJobSearch() {
     const { fn, data: allJobs, isReady } = usefetch(getJobs, {}); // fn fetching the data, allJobs contains the data, isReady is whether data is fully loaded.
     const [appliedJobs, setAppliedJobs] = useState(new Set()); // Store applied job IDs
     const userId = user?.id; // User ID
+
+    // AOS initialization
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
 
     // Fetching applied jobs from Applications table in supabase
     useEffect(() => {
@@ -70,7 +77,7 @@ export default function ModernJobSearch() {
             <div className="min-h-screen p-8 bg-gradient-to-br mt-[40px] from-indigo-50 to-purple-100">
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
-                    <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/20 p-10 mb-10">
+                    <div data-aos="fade-down" className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/20 p-10 mb-10">
                         <h1 className="text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-10">
                             Discover Your Dream Career
                         </h1>
@@ -109,7 +116,7 @@ export default function ModernJobSearch() {
                     </div>
                     {/* Jobs */}
                     <div className="w-full">
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div data-aos="flip-up" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {filteredJobs.map(job => (
                                 <Link key={job.id} to={`/jobs/${job.id}`}>
                                     <div className="bg-white/80 hover:scale-110 transition-all duration-300 ease-in backdrop-blur-lg rounded-3xl shadow-lg p-6 border border-white/20">
@@ -131,8 +138,9 @@ export default function ModernJobSearch() {
                                         </div>
                                         {/* Apply Now Button */}
                                         <button onClick={() => {
-                                                localStorage.setItem("selectedJobId", job.id);
-                                                window.location.href = `/applyjob/${job.id}`;}}
+                                            localStorage.setItem("selectedJobId", job.id);
+                                            window.location.href = `/applyjob/${job.id}`;
+                                        }}
                                             className={`mt-4 px-6 py-2.5 text-white rounded-full ${appliedJobs.has(job.id)
                                                 ? "bg-gray-400 cursor-not-allowed"
                                                 : "bg-gradient-to-r from-blue-500 to-purple-600 hover:scale-110 transition-all duration-300 ease-in"

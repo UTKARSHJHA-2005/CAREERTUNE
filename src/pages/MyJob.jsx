@@ -4,6 +4,8 @@ import { useUser } from "@clerk/clerk-react"; // Clerk Auth
 import supabase from "../utils/supabase2"; // Supabase
 import { Link } from "react-router-dom"; // Link Routing
 import Navbar from "../components/Navbar"; // Navbar Component
+import AOS from "aos"; // AOS 
+import "aos/dist/aos.css";
 
 export default function MyJob() {
   const { user } = useUser(); // User from Clerk Auth
@@ -13,6 +15,11 @@ export default function MyJob() {
   const [statusFilter, setStatusFilter] = useState("All"); // Status Filter
   const [company, setCompany] = useState(""); // Company Filter
   const userId = user?.id; // User ID from Clerk Auth
+
+  // AOS initialization
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   // Status Styles
   const statusStyles = {
@@ -60,13 +67,14 @@ export default function MyJob() {
     <>
       {/* Navbar */}
       <Navbar />
+      <br />
       <div className="max-w-6xl mt-[40px] mx-auto p-6 bg-white rounded-lg shadow-lg">
         {/* Header */}
         <div className="border-b border-gray-200 pb-4 mb-6">
           <h1 className="text-3xl font-bold text-gray-600">My Applications</h1>
         </div>
         {/* Search and Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-6">
+        <div data-aos="flip-up" className="flex flex-col md:flex-row gap-4 mb-6">
           {/* Search Input */}
           <div className="relative flex-1">
             <input type="text" placeholder="Search job titles..."
@@ -80,23 +88,23 @@ export default function MyJob() {
           </div>
           {/* Status Filter */}
           <div className="relative md:w-48">
-            <select 
-            className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg appearance-none bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-            value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+            <select
+              className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg appearance-none bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
               <option value="All">All Status</option>
               <option value="Applied">Applied</option>
               <option value="Interviewing">Interviewing</option>
               <option value="Rejected">Rejected</option>
               <option value="Hired">Hired</option>
             </select>
-            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" fill="none" stroke="currentColor" 
-            viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </div>
         </div>
         {/* Applications Table */}
-        <div className="overflow-hidden rounded-lg border border-gray-200">
+        <div data-aos="fade-down" className="overflow-hidden rounded-lg border border-gray-200">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
@@ -132,8 +140,8 @@ export default function MyJob() {
                     <td className="px-6 py-4">
                       <div className="flex text-right items-center text-gray-500">
                         <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                         {new Date(job.created_at).toLocaleDateString("en-GB", {
                           day: "2-digit",

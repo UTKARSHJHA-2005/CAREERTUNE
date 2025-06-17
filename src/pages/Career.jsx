@@ -6,6 +6,8 @@ import { ToastContainer, toast } from "react-toastify"; // Notification
 import { chatSession } from "../utils/AIModal"; // AI Modal
 import { useNavigate, Link } from "react-router-dom"; // Navigation
 import supabase from "../utils/supabase2"; // Database
+import AOS from "aos"; // AOS 
+import "aos/dist/aos.css";
 
 // Topics data
 const topics = [
@@ -70,6 +72,11 @@ const CareerAdvice = () => {
         fetchAdvisers();
     }, []);
 
+    // AOS initialization
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
+
     // Function to handle input changes
     const handleInputChange = (e) => {
         setValue(e.target.value);
@@ -87,7 +94,7 @@ const CareerAdvice = () => {
             const generatedText = result?.response?.text() || "";// Extract the generated text from AI
             console.log("Generated AI Content:", generatedText);
             navigate("/career-result", { state: { topic, generatedText } });
-        // Handle errors
+            // Handle errors
         } catch (error) {
             console.error("Error generating AI content:", error.message);
             toast.error("Failed to generate AI content. Please try again.");
@@ -100,7 +107,7 @@ const CareerAdvice = () => {
             <Navbar />
             <main className="container mx-auto px-4 py-8 mt-12">
                 {/* Hero Section */}
-                <div className="text-center mb-12">
+                <div data-aos="fade-down-right" className="text-center mb-12">
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">
                         Your AI Career Guide
                     </h1>
@@ -113,11 +120,11 @@ const CareerAdvice = () => {
                     <div className="relative">
                         <Search className="absolute left-3 top-3 text-gray-400" size={20} />
                         <input type="text" value={value} onChange={handleInputChange} placeholder="Enter your role or industry"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"/>
+                            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white" />
                     </div>
                 </div>
                 {/* Topics */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div data-aos="flip-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                     {topics.map((topic, index) => (
                         <button
                             key={index}
@@ -152,7 +159,7 @@ const CareerAdvice = () => {
                         </Link>
                     </div>
                     {/* Human Advisers */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div data-aos="flip-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {advisers.map((adviser, index) => (
                             <div key={index} className="bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-200">
                                 <Link to={`/adviser/${adviser.id}`}>

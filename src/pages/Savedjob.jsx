@@ -6,6 +6,8 @@ import { useUser } from "@clerk/clerk-react"; // Clerk Auth
 import { Search, MapPin, Building2, Clock, Bookmark, Briefcase } from "lucide-react"; // Icons
 import { Link } from "react-router-dom"; // Navigation
 import usefetch from "../hooks/usefetch"; // Custom Hook
+import AOS from "aos"; // AOS 
+import "aos/dist/aos.css";
 
 export default function Savedjob() {
     const { user } = useUser();
@@ -16,6 +18,11 @@ export default function Savedjob() {
     const [appliedJobs, setAppliedJobs] = useState(new Set()); // Applied Jobs
     const { fn, data: allJobs, isReady } = usefetch(SavedJobs, {}); // fn fetching the data, allJobs contains the data, isReady is whether data is fully loaded.
     const userId = user?.id; // User ID
+
+    // AOS initialization
+      useEffect(() => {
+        AOS.init({ duration: 1000 });
+      }, []);
 
     // Fetch applied jobs from Applications table supabase
     useEffect(() => {
@@ -65,7 +72,7 @@ export default function Savedjob() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-blue-100 p-8 font-inter">
             <div className="w-full">
-                <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-12 mb-10 overflow-hidden">
+                <div data-aos="flip-down" className="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-12 mb-10 overflow-hidden">
                     {/* Decorative elements */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-indigo-400/20 to-pink-400/20 rounded-full blur-3xl -ml-32 -mb-32"></div>
@@ -101,7 +108,7 @@ export default function Savedjob() {
                     </div>
                 </div>
                 {/* Jobs */}
-                <div className="w-full">
+                <div data-aos="flip-up" className="w-full">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredJobs.map(job => (
                             <Link key={job.id} to={`/saved-jobs/${job.id}`}>

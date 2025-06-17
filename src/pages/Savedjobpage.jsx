@@ -2,21 +2,24 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom'; // Navigation
 import { getaJob } from '../utils/api'; // API for getting details of job
-import { ToastContainer,toast } from 'react-toastify'; // Notifications
+import { ToastContainer, toast } from 'react-toastify'; // Notifications
 import supabase from '../utils/supabase2'; // Supabase
 import {
-  MapPin, Building2, DollarSign, Clock, Calendar,ChevronLeft, AlertCircle, CheckCircle, ScrollText, Users, Target, Award} from 'lucide-react';// Icons
+  MapPin, Building2, DollarSign, Clock, Calendar, ChevronLeft, AlertCircle, CheckCircle, ScrollText, Users, Target, Award
+} from 'lucide-react';// Icons
 import { useUser } from '@clerk/clerk-react'; // Clerk Auth
+import AOS from 'aos'; //AOS
+import 'aos/dist/aos.css';
 
 export default function SavedjobPage() {
   const { jobid } = useParams(); // Job ID from URL
-  const {user}=useUser() // Clerk Auth
+  const { user } = useUser() // Clerk Auth
   const [job, setJob] = useState(null); // Job details
   const [loading, setLoading] = useState(true);// Loading State
   const [error, setError] = useState(null); // Error state
   const [hasApplied, setHasApplied] = useState(false);// Applied
   const [isSaved, setIsSaved] = useState(false);// Saved
-  const userId=user?.id;  // User ID
+  const userId = user?.id;  // User ID
 
   // Function to remove Saved job
   const handleSaveJob = async () => {
@@ -26,7 +29,7 @@ export default function SavedjobPage() {
         .from("Saved Jobs")
         .remove([
           {
-            id: jobid, 
+            id: jobid,
             user_id: userId,
             title: job.Title,
             company: job.Company,
@@ -45,11 +48,16 @@ export default function SavedjobPage() {
         console.log("Job removed successfully:", data);
         setIsSaved(true);
       }
-    // Error in saving job
+      // Error in saving job
     } catch (err) {
       console.error("Unexpected error:", err);
     }
   };
+
+  // AOS initialization
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   // Check if the job is already saved when the page loads
   useEffect(() => {
@@ -57,7 +65,7 @@ export default function SavedjobPage() {
       const { data, error } = await supabase
         .from("Saved Jobs")
         .select("id")
-        .eq("user_id", userId) 
+        .eq("user_id", userId)
         .eq("id", jobid);
       // If not saved
       if (error) {
@@ -72,23 +80,23 @@ export default function SavedjobPage() {
   // Fetching applied jobs
   useEffect(() => {
     const fetchAppliedJobs = async () => {
-        // Fetching in Applications table in supabase
-        const { data, error } = await supabase
-            .from("Applications")
-            .select("job_id")
-            .eq("user_id", userId);
-        // Error in fetching
-        if (error) {
-            console.error("Error fetching applications:", error.message);
-            return;
-        }
-        console.log(data)
-        const appliedJobIds = new Set(data.map(app => app.job_id)); // Convert to Set for fast lookup
-        setHasApplied(appliedJobIds);
+      // Fetching in Applications table in supabase
+      const { data, error } = await supabase
+        .from("Applications")
+        .select("job_id")
+        .eq("user_id", userId);
+      // Error in fetching
+      if (error) {
+        console.error("Error fetching applications:", error.message);
+        return;
+      }
+      console.log(data)
+      const appliedJobIds = new Set(data.map(app => app.job_id)); // Convert to Set for fast lookup
+      setHasApplied(appliedJobIds);
     };
     fetchAppliedJobs();
-}, [jobid]);
-  
+  }, [jobid]);
+
   // Fetching job details
   useEffect(() => {
     async function fetchJobDetails() {
@@ -106,7 +114,7 @@ export default function SavedjobPage() {
           throw new Error("No job found or API error");
         }
         setJob(data);
-      // Error in fetching
+        // Error in fetching
       } catch (err) {
         setError(err.message);
       } finally {
@@ -131,7 +139,7 @@ export default function SavedjobPage() {
   // Error
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div data-aos="fade-left" className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
           <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-800 mb-3">Error Loading Job</h2>
@@ -152,7 +160,7 @@ export default function SavedjobPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Header */}
-      <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 text-white">
+      <div data-aos="fade-down" className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 text-white">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <Link to="/saved-jobs" className="inline-flex items-center text-white/90 hover:text-white mb-8 transition-colors duration-200">
             <ChevronLeft className="w-5 h-5 mr-2" />
@@ -194,7 +202,7 @@ export default function SavedjobPage() {
         </div>
       </div>
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div data-aos="fade-up" className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-2">
@@ -286,7 +294,7 @@ export default function SavedjobPage() {
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }
