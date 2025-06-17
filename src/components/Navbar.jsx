@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
-import { BriefcaseBusiness, Heart, Menu, X, ChevronDown, Sparkles } from "lucide-react";
-import fav from "../public/fav.jpg"
-import AOS from 'aos';
+// This is the navbar component which is the head of the web page.
+import { useState, useEffect } from "react";0
+import { BriefcaseBusiness, Heart, Menu, X, ChevronDown, Sparkles } from "lucide-react"; // Icons
+import fav from "../public/fav.jpg"// Image
+import AOS from 'aos'; // AOS
 import 'aos/dist/aos.css';
-import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react"; // Clerk
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isOpen, setIsOpen] = useState(false); // Opening of menu in mobile view
+  const [scrolled, setScrolled] = useState(false); // Scrolling
+  const [activeDropdown, setActiveDropdown] = useState(null); // Dropdown
 
   // AOS initialization
   useEffect(() => {
@@ -66,7 +67,6 @@ const Navbar = () => {
               </a>
             </div>
             {/* Desktop Navigation */}
-
             <SignedIn>
               <div className="hidden lg:flex items-center space-x-1">
                 <a href="/my-jobs" className="group relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-300">
@@ -74,13 +74,11 @@ const Navbar = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 rounded-lg transition-all duration-300"></div>
                   <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full group-hover:left-0 transition-all duration-300"></div>
                 </a>
-
                 <a href="/jobs" className="group relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-300">
                   <span className="relative z-10">Jobs</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 rounded-lg transition-all duration-300"></div>
                   <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full group-hover:left-0 transition-all duration-300"></div>
                 </a>
-
                 <a href="/career-advice" className="group relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-300">
                   <span className="relative z-10">Career Advice</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 rounded-lg transition-all duration-300"></div>
@@ -114,10 +112,7 @@ const Navbar = () => {
                 </UserButton>
               </SignedIn>
               {/* Mobile Menu Button */}
-              <button
-                onClick={toggleMenu}
-                className="lg:hidden p-2 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:bg-gray-700/50 transition-all duration-300"
-              >
+              <button onClick={toggleMenu} className="lg:hidden p-2 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:bg-gray-700/50 transition-all duration-300">
                 {isOpen ? (
                   <X className="w-6 h-6 text-gray-300" />
                 ) : (
@@ -136,11 +131,8 @@ const Navbar = () => {
         />
       )}
       {isOpen && (
-        <div
-          data-aos="fade-down"
-          className={`fixed top-0 right-0 h-full w-80 bg-gray-900/95 backdrop-blur-lg border-l border-gray-700/50 transform transition-transform duration-300 ease-out z-50 lg:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'
-            }`}
-        >
+        <div data-aos="fade-down"
+        className={`fixed top-0 right-0 h-full w-80 bg-gray-900/95 backdrop-blur-lg border-l border-gray-700/50 transform transition-transform duration-300 ease-out z-50 lg:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full' }`}>
           <div className="flex flex-col h-full">
             {/* Mobile Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
@@ -157,16 +149,11 @@ const Navbar = () => {
                 <X className="w-6 h-6 text-gray-400" />
               </button>
             </div>
-
             {/* Mobile Navigation Links */}
             <SignedIn>
               <div className="flex-1 py-6">
                 <div className="space-y-2 px-6">
-                  <a
-                    href="/my-jobs"
-                    onClick={closeMobileMenu}
-                    className="block py-3 px-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-xl transition-all duration-200"
-                  >
+                  <a href="/my-jobs" onClick={closeMobileMenu} className="block py-3 px-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-xl transition-all duration-200">
                     Applications
                   </a>
                   <a
@@ -176,17 +163,12 @@ const Navbar = () => {
                   >
                     Jobs
                   </a>
-                  <a
-                    href="/career-advice"
-                    onClick={closeMobileMenu}
-                    className="block py-3 px-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-xl transition-all duration-200"
-                  >
+                  <a href="/career-advice" onClick={closeMobileMenu} className="block py-3 px-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-xl transition-all duration-200">
                     Career Advice
                   </a>
                 </div>
               </div>
             </SignedIn>
-
             {/* Mobile Bottom Section */}
             <div className="px-6 pb-6">
               <SignedIn>
