@@ -4,11 +4,11 @@ import Hero from '../components/Hero' // Hero component
 
 export default function Home() {
   return (
-    <div className='overflow-x-hidden'>
-      <Navbar />
-      <br />
-      <br />
-      <Hero />
-    </div>
+  <div className="overflow-x-hidden">
+   <Navbar />
+   <br />
+   <br />
+   <Hero />
+  </div>
   )
 }
