@@ -85,8 +85,8 @@ const stats = [
 ];
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false); // Visibility
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // Image Index
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -143,10 +143,6 @@ export default function Hero() {
             <div data-aos="fade-left" className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Content */}
               <div className={`text-center ml-5 lg:text-left transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white text-sm mb-6">
-                  <Sparkles className="w-4 h-4 mr-2 text-yellow-400" />
-                  #1 Career Platform
-                </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
                   Transform your <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 animate-pulse">

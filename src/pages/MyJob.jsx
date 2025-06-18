@@ -68,61 +68,82 @@ export default function MyJob() {
       {/* Navbar */}
       <Navbar />
       <br />
-      <div className="max-w-6xl mt-[40px] mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <div className="max-w-6xl mt-[40px] mx-auto p-4 sm:p-6 bg-white rounded-lg shadow-lg">
         {/* Header */}
         <div className="border-b border-gray-200 pb-4 mb-6">
-          <h1 className="text-3xl font-bold text-gray-600">My Applications</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-600">My Applications</h1>
         </div>
+
         {/* Search and Filters */}
         <div data-aos="flip-up" className="flex flex-col md:flex-row gap-4 mb-6">
           {/* Search Input */}
           <div className="relative flex-1">
-            <input type="text" placeholder="Search job titles..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-              value={search} onChange={(e) => setSearch(e.target.value)} />
-            <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            <input
+              type="text"
+              placeholder="Search job titles..."
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <svg
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
             </svg>
           </div>
+
           {/* Status Filter */}
           <div className="relative md:w-48">
             <select
-              className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg appearance-none bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-              value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+              className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg appearance-none bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+            >
               <option value="All">All Status</option>
               <option value="Applied">Applied</option>
               <option value="Interviewing">Interviewing</option>
               <option value="Rejected">Rejected</option>
               <option value="Hired">Hired</option>
             </select>
-            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24">
+            <svg
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </div>
         </div>
-        {/* Applications Table */}
-        <div data-aos="fade-down" className="overflow-hidden rounded-lg border border-gray-200">
-          <table className="w-full">
+
+        {/* Applications Table (Responsive Scroll) */}
+        <div data-aos="fade-down" className="overflow-x-auto rounded-lg border border-gray-200">
+          <table className="min-w-full text-sm sm:text-base">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Company</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-600">Position</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Applied On</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-600">Status</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-600">Actions</th>
+                <th className="px-4 sm:px-6 py-4 text-left font-semibold text-gray-600">Company</th>
+                <th className="px-4 sm:px-6 py-4 text-center font-semibold text-gray-600">Position</th>
+                <th className="px-4 sm:px-6 py-4 text-left font-semibold text-gray-600">Applied On</th>
+                <th className="px-4 sm:px-6 py-4 text-center font-semibold text-gray-600">Status</th>
+                <th className="px-4 sm:px-6 py-4 text-center font-semibold text-gray-600">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {filteredJobs.length > 0 ? (
                 filteredJobs.map((job) => (
                   <tr key={job.id} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4">
+                    <td className="px-4 sm:px-6 py-4">
                       <div className="flex items-center">
                         <div className="h-10 w-10 flex-shrink-0 rounded-full bg-blue-100 flex items-center justify-center">
-                          <span className="text-lg font-medium text-blue-600">
+                          <span className="text-base font-medium text-blue-600">
                             {job.Jobs.Company.charAt(0)}
                           </span>
                         </div>
@@ -131,31 +152,45 @@ export default function MyJob() {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 sm:px-6 py-4 text-center">
                       <div className="text-gray-900">{job.Jobs.Title}</div>
-                      <a href={`/jobs/${job.Jobs.id}`} className="text-blue-500 text-sm hover:underline">
+                      <a
+                        href={`/jobs/${job.Jobs.id}`}
+                        className="text-blue-500 text-sm hover:underline"
+                      >
                         View Details
                       </a>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="flex text-right items-center text-gray-500">
-                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <td className="px-4 sm:px-6 py-4 text-left">
+                      <div className="flex items-center text-gray-500">
+                        <svg
+                          className="w-4 h-4 mr-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
                         </svg>
                         {new Date(job.created_at).toLocaleDateString("en-GB", {
                           day: "2-digit",
                           month: "short",
-                          year: "2-digit"
+                          year: "2-digit",
                         })}
                       </div>
                     </td>
-                    <td className="px-6 py-4 ">
-                      <span className={`inline-flex px-3 py-1 text-sm font-medium rounded-full ${statusStyles[job.status]}`}>
+                    <td className="px-4 sm:px-6 py-4 text-center">
+                      <span
+                        className={`inline-flex px-3 py-1 text-sm font-medium rounded-full ${statusStyles[job.status]}`}
+                      >
                         {job.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-4 sm:px-6 py-4 text-center">
                       <Link to={`/review/${job.id}`}>
                         <button className="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
                           Review
@@ -165,17 +200,26 @@ export default function MyJob() {
                   </tr>
                 ))
               ) : (
-                /* If no Applications Found */
                 <tr>
                   <td colSpan="5" className="px-6 py-10 text-center">
                     <div className="flex flex-col items-center">
-                      <svg className="w-12 h-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                      <svg
+                        className="w-12 h-12 text-gray-400 mb-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
                           d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                         />
                       </svg>
                       <p className="text-lg font-medium text-gray-900">No applications found</p>
-                      <p className="text-sm text-gray-500">Try adjusting your search or filter criteria</p>
+                      <p className="text-sm text-gray-500">
+                        Try adjusting your search or filter criteria
+                      </p>
                     </div>
                   </td>
                 </tr>
