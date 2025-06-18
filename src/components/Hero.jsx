@@ -131,7 +131,7 @@ export default function Hero() {
   return (
     <>
       <section className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 overflow-hidden"
-        style={{ width: '100vw', minWidth: '100vw', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw', position: 'relative' }}>
+        style={{ width: '100vw', minWidth: '100vw', overflowX: 'hidden', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw', position: 'relative' }}>
         {/* Background Blur Bubbles */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[-10rem] right-[-10rem] w-80 h-80 bg-purple-500 rounded-full blur-3xl opacity-20 animate-pulse" />
