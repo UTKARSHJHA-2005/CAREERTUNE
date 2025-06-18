@@ -4,7 +4,7 @@ import Hero from '../components/Hero' // Hero component
 
 export default function Home() {
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <Navbar />
       <br />
       <br />
