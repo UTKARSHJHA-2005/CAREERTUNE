@@ -20,7 +20,7 @@ Frameworks: Vite, TailwindCSS.<br/>
 🛠️ Setup Instruction<br/>
 Prerequisites<br/>
 Ensure you have the following installed:<br/>
-1) Node.js,br/>
+1) Node.js<br/>
 2) npm<br/>
 <br/>
 <strong><i>Installation Steps</i></strong><br/>
