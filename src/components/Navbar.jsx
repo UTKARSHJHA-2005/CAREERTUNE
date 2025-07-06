@@ -1,5 +1,5 @@
 // This is the navbar component which is the head of the web page.
-import { useState, useEffect } from "react";0
+import { useState, useEffect } from "react"; 0
 import { BriefcaseBusiness, Heart, Menu, X, ChevronDown, Sparkles } from "lucide-react"; // Icons
 import fav from "../public/fav.jpg"// Image
 import AOS from 'aos'; // AOS
@@ -54,9 +54,10 @@ const Navbar = () => {
             <div className="flex items-center">
               <a href="/" className="group flex items-center space-x-3 hover:scale-105 transition-transform duration-300">
                 <div className="relative">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/25 transition-shadow duration-300">
+                  {/* <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/25 transition-shadow duration-300">
                     <img src={fav} alt="" className="h-20 w-20 object-contain" />
-                  </div>
+                  </div> */}
+                  <img src={fav} alt="" className="h-12 w-12 object-contain" />
                 </div>
                 <div>
                   <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -132,14 +133,15 @@ const Navbar = () => {
       )}
       {isOpen && (
         <div data-aos="fade-down"
-        className={`fixed top-0 right-0 h-full w-80 bg-gray-900/95 backdrop-blur-lg border-l border-gray-700/50 transform transition-transform duration-300 ease-out z-50 lg:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full' }`}>
+          className="fixed top-0 right-0 h-full w-[90vw] max-w-xs bg-gray-900/95 backdrop-blur-lg border-l border-gray-700/50 transform transition-transform duration-300 ease-out z-50 lg:hidden translate-x-0">
           <div className="flex flex-col h-full">
             {/* Mobile Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                   <img src={fav} alt="" className="h-20 w-20 object-contain" />
-                </div>
+                </div> */}
+                <img src={fav} alt="" className="h-20 w-20 object-contain" />
                 <h2 className="text-lg font-bold text-white">CAREERTUNE</h2>
               </div>
               <button

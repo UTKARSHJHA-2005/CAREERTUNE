@@ -95,7 +95,7 @@ export default function Hero() {
     AOS.init({ duration: 1000 });
   }, []);
 
-  /// This is for mobile view in which arrow function is there in which next and previous arrows are there. 
+  // This is for mobile view in which arrow function is there in which next and previous arrows are there. 
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isAnimating) {
