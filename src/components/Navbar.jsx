@@ -136,7 +136,7 @@ const Navbar = () => {
           className="fixed top-0 right-0 h-full w-[90vw] max-w-xs bg-gray-900/95 backdrop-blur-lg border-l border-gray-700/50 transform transition-transform duration-300 ease-out z-50 lg:hidden translate-x-0">
           <div className="flex flex-col h-full">
             {/* Mobile Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
+            <div className="flex items-center justify-between p-6">
               <div className="flex items-center space-x-3">
                 {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                   <img src={fav} alt="" className="h-20 w-20 object-contain" />
