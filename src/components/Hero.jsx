@@ -132,12 +132,6 @@ export default function Hero() {
     <>
       <section className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 overflow-hidden"
         style={{ width: '100vw', minWidth: '100vw', overflowX: 'hidden', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw', position: 'relative' }}>
-        {/* Background Blur Bubbles */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-[-10rem] right-[-10rem] w-80 h-80 bg-purple-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-          <div className="absolute bottom-[-10rem] left-[-10rem] w-80 h-80 bg-blue-500 rounded-full blur-3xl opacity-20 animate-pulse delay-1000" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full blur-3xl opacity-10 animate-pulse delay-2000" />
-        </div>
         <div className="relative z-10 w-full px-0 py-16 sm:py-24 lg:py-32">
           <div className="w-full">
             <div data-aos="fade-left" className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -245,12 +239,6 @@ export default function Hero() {
       {/* Team Component*/}
       <Team />
       <section className="py-20 w-full bg-gradient-to-br from-blue-800 via-blue-900 to-slate-900 overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-10 left-1/3 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
-        </div>
         <div className="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           {/* Header Section Of the Testimonial */}
           <div data-aos="flip-up" className="text-center mb-16">
@@ -282,10 +270,8 @@ export default function Hero() {
             <div data-aos="flip-down" className="hidden lg:block">
               <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {testimonials.map((testimonial, index) => (
-                  <div
-                    key={testimonial.id}
-                    className={`group relative transform transition-all duration-700 hover:scale-105 ${index === 1 ? 'lg:scale-110 lg:-translate-y-4' : ''}`}
-                  >
+                  <div key={testimonial.id}
+                  className={`group relative transform transition-all duration-700 hover:scale-105 ${index === 1 ? 'lg:scale-110 lg:-translate-y-4' : ''}`}>
                     <div className="relative overflow-hidden rounded-2xl bg-white shadow-2xl border border-gray-200">
                       {/* Gradient top bar */}
                       <div className={`h-1 bg-gradient-to-r ${testimonial.gradient}`}></div>

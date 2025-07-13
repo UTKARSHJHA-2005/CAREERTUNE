@@ -44,11 +44,11 @@ const Navbar = () => {
   return (
     <>
       {/* Main Navbar */}
-      <nav className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${scrolled
+      <nav className={`fixed w-full top-0 left-0 z-50 transition-allpx-4 sm:px-6 lg:px-8 duration-300 ${scrolled
         ? 'bg-gray-900/95 backdrop-blur-lg shadow-2xl border-b border-gray-700/50'
         : 'bg-gray-900/90 backdrop-blur-sm'
         }`}>
-        <div className="px-4 sm:px-6 lg:px-8 w-full">
+        <div>
           <div className="flex items-center justify-between h-20">
             {/* Logo Section */}
             <div className="flex items-center">
@@ -60,10 +60,10 @@ const Navbar = () => {
                   <img src={fav} alt="" className="h-12 w-12 object-contain" />
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  <h1 className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     CAREERTUNE
                   </h1>
-                  <p className="text-xs text-gray-400 -mt-1">Find Your Dream Job</p>
+                  <p className="text-xs text-gray-400 mt-1">Find Your Dream Job</p>
                 </div>
               </a>
             </div>
@@ -87,14 +87,13 @@ const Navbar = () => {
                 </a>
               </div>
             </SignedIn>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center">
               {/* Sign Up Button - When Not Signed In */}
               <SignedOut>
                 <div className="flex items-center space-x-3">
                   <a href="/signup"
-                    className="group relative px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-105">
+                    className="group relative px-4 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-105">
                     <span className="relative z-10">Sign Up</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/0 group-hover:from-white/10 group-hover:to-white/5 rounded-xl transition-all duration-300"></div>
                   </a>
                 </div>
               </SignedOut>
@@ -136,7 +135,7 @@ const Navbar = () => {
           className="fixed top-0 right-0 h-full w-[90vw] max-w-xs bg-gray-900/95 backdrop-blur-lg border-l border-gray-700/50 transform transition-transform duration-300 ease-out z-50 lg:hidden translate-x-0">
           <div className="flex flex-col h-full">
             {/* Mobile Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
+            <div className="flex items-center justify-between p-6">
               <div className="flex items-center space-x-3">
                 {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                   <img src={fav} alt="" className="h-20 w-20 object-contain" />
